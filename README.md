@@ -10,7 +10,11 @@
 
 ## Запуск
 
-Требуется Node.js >= 18.
+Требования:
+
+- Node.js >= 18
+- Docker Engine >= 20.10
+- Docker Compose >= 2.0 (`docker compose`)
 
 ```bash
 npm start -- <url>
