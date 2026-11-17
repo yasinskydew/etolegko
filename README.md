@@ -10,13 +10,28 @@
 
 ## Запуск
 
+Требуется Node.js >= 18.
+
 ```bash
-npm start -- http://example.com/file.bin
+npm start -- <url>
 # или
-node src/run.js http://example.com/file.bin
+node src/run.js <url>
 ```
 
-В консоль выводятся только старт и скорость скачивания (`MiB/s`). Полные метрики с timestamp перезаписываются в `metrics.txt`.
+Пример с локальным MinIO:
+
+```bash
+npm start -- http://localhost:9000/heavy-files/photo_visokogo_razresheniya.jpg
+```
+
+Консоль:
+
+```text
+Starting download benchmark: http://localhost:9000/heavy-files/photo_visokogo_razresheniya.jpg
+Download speed: 137.074 MiB/s
+```
+
+Полные метрики с timestamp перезаписываются в `metrics.txt`.
 
 ## Локальный MinIO для теста
 
@@ -24,16 +39,10 @@ node src/run.js http://example.com/file.bin
 docker compose up -d
 ```
 
-В bucket загружается [`asset/photo_visokogo_razresheniya.jpg`](asset/photo_visokogo_razresheniya.jpg) (~50 MiB).
+В bucket `heavy-files` загружается [`asset/photo_visokogo_razresheniya.jpg`](asset/photo_visokogo_razresheniya.jpg) (~50 MiB):
 
 ```text
 http://localhost:9000/heavy-files/photo_visokogo_razresheniya.jpg
-```
-
-Проверка:
-
-```bash
-npm start -- http://localhost:9000/heavy-files/photo_visokogo_razresheniya.jpg
 ```
 
 Консоль MinIO: `http://localhost:9001` (`minioadmin` / `minioadmin`).
